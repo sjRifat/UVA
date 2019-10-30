@@ -21,7 +21,7 @@ ll row,clm,mx,cnt;
 char ch[22][22];
 
 void flood_fill(ll i,ll j,char c){
-    ll c1=0,c2=0,c3=0,c4=0;
+    ll c3=0,c4=0;
     if(i<0) return;
     if(j<0&&c3>0) return;
     if(i>=row) return;
@@ -43,7 +43,6 @@ int main(){
 //    freopen("input.txt","r",stdin);
     ll a,b,i,j,t,k,lie,m,n,o,x,y,z,ar[200010];
     while(SS(row,clm)==2){
-        getchar();
         for(i=0;i<row;i++){
             for(j=0;j<clm;j++) scanf(" %c",&ch[i][j]);
         }
