@@ -44,7 +44,6 @@ int main()
                     }
                 }
             }
-
         }
         vd.push_back(21);
         sort(vu.begin(),vu.end());
