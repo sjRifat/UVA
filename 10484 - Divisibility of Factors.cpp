@@ -4,23 +4,6 @@
 using namespace std;
 #define ll  long long
 
-ll spf[101];
-
-void spfgen(){
-    ll i,j,n=101;
-    for(i=1;i<=101;i++){
-        if(i&1) spf[i]=i;
-        else spf[i]=2LL;
-    }
-    for(i=3;i*i<=101;i+=2){
-        if(spf[i]==i){
-            for(j=i*i;j<=101;j+=i){
-                if(spf[j]==j) spf[j]=i;
-            }
-        }
-    }
-}
-
 bool ar[50000];
 vector<ll>v;
 void sieve(){
@@ -37,7 +20,6 @@ void sieve(){
 
 int main(){
     ll n,m,d,a,b,x,y,i,j;
-    spfgen();
     sieve();
     while(scanf("%lld %lld",&n,&d)&&n||d){
         map<ll,ll>mn,md;
@@ -52,12 +34,17 @@ int main(){
             }
         }
         if(x!=1) md[x]++;
-        for(i=2;i<=n;i++){
-            x=i;
-            while(x!=1){
-                mn[spf[x]]++;
-                x/=spf[x];
+        for(j=2;j<=n;j++){
+            x=j;
+            for(i=0;v[i]*v[i]<=x;i++){
+                if(x%v[i]==0){
+                    while(x%v[i]==0){
+                        x/=v[i];
+                        mn[v[i]]++;
+                    }
+                }
             }
+            if(x!=1) mn[x]++;
         }
         for(auto i : md){
             x=i.first;
