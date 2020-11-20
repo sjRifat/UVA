@@ -17,20 +17,18 @@ typedef		vector<ll>      vll;
 #define		pi              acos(-1.0)
 #define		OO              10000000000
 
-int main(){
-//    freopen("input.txt","r",stdin);
-    ll a,b,c=0,i,j,t,k,lie,m,n,o,x,y,z;
-    while(S(n)&&n){
-        ll ar[1010],ind=1;
-        ar[0]=n;
-        while(S(n)&&n){
-            ar[ind]=n;
-            ind++;
+int main()
+{
+    ll a,b,i,j,n,t,k,lie;
+    vll v;
+    while(S(n)==1){
+        v.pb(n);
+        sort(all(v));
+        if(zz(v)&1) printf("%lld\n",v[zz(v)/2]);
+        else{
+            ll x=(v[zz(v)/2]+v[zz(v)/2-1])/2;
+            printf("%lld\n",x);
         }
-        sort(ar,ar+ind);
-        x=0;
-        for(i=1;i<ind;i++) x=gcd(x,ar[i]-ar[i-1]);
-        printf("%lld\n",x);
     }
 
     return 0;
